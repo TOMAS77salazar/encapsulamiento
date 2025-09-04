@@ -2,34 +2,36 @@ public class CuentaBancaria {
     // Atributo privado
     private double saldo;
 
-    // Constructor (opcional)
+    // Constructor (inicia con saldo 0)
     public CuentaBancaria() {
-        saldo = 0.0;
+        this.saldo = 0;
     }
 
-
-    public void depositar(double cantidad) {
-        if (cantidad > 0) {
-            saldo += cantidad;
-            System.out.println("Se depositaron $" + cantidad);
+    // Método para depositar
+    public void depositar(double monto) {
+        if (monto > 0) {
+            saldo += monto;
+            System.out.println("Se depositaron $" + monto);
         } else {
-            System.out.println("La cantidad a depositar debe ser positiva.");
+            System.out.println("El depósito debe ser mayor a 0.");
         }
     }
 
-
-    public void retirar(double cantidad) {
-        if (cantidad <= 0) {
-            System.out.println("La cantidad a retirar debe ser mayor que cero.");
-        } else if (cantidad > saldo) {
-            System.out.println("Fondos insuficientes. Saldo disponible: $" + saldo);
+    // Método para retirar
+    public void retirar(double monto) {
+        if (monto > 0) {
+            if (monto <= saldo) {
+                saldo -= monto;
+                System.out.println("Se retiraron $" + monto);
+            } else {
+                System.out.println("Fondos insuficientes.");
+            }
         } else {
-            saldo -= cantidad;
-            System.out.println("Se retiraron $" + cantidad);
+            System.out.println("El retiro debe ser mayor a 0.");
         }
     }
 
-
+    // Getter para consultar saldo
     public double getSaldo() {
         return saldo;
     }
